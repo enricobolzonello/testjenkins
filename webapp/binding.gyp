@@ -2,8 +2,8 @@
     "targets": [
         {
             "target_name" : "travelingsalesmanoptimization",
-            "cflags!" : [ "-std=gnu99 -fno-exceptions -O3 -fstack-protector-all -Wstack-protector  -Wall -Wextra -pedantic" ],
-            "cflags_cc!" : [ "-std=gnu99 -fno-exceptions -O3 -fstack-protector-all -Wstack-protector  -Wall -Wextra -pedantic" ],
+            "cflags!" : [ "-std=gnu99 -fno-exceptions -O3 -fstack-protector-all -Wstack-protector" ],
+            "cflags_cc!" : [ "-std=gnu99 -fno-exceptions -O3 -fstack-protector-all -Wstack-protector" ],
             "sources" : [
                 "index.cpp",
                 "../src/tsp.c",
