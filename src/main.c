@@ -93,5 +93,7 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
         break;
     }
 
-    exit(0);
+    rs.filename = (char*) malloc(strlen(inst.options_t.inputfile)+1);
+    strcpy(rs.filename, inst.options_t.inputfile);
+    rs.cost = inst.best_solution.cost;
 }
