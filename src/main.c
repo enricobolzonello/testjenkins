@@ -7,21 +7,9 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
     instance inst;
 
     ERROR_CODE e;
+    tsp_init(&inst);
 
-    inst.options_t.tofile = true;
-    inst.options_t.graph_input = true;
-
-    if(!utils_file_exists(path)){
-                log_fatal("file does not exist");
-                tsp_handlefatal(&inst);
-            }
-
-    inst.options_t.inputfile = (char*) calloc(strlen(path), sizeof(char));
-    strcpy(inst.options_t.inputfile, path);
-
-    if(inst.options_t.graph_input){
-        tsp_read_input(&inst);
-    }
+    // start options
 
     if(seed != -1){
         inst.options_t.seed = seed;
@@ -33,6 +21,26 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
 
     inst.alg = alg;
 
+    err_setverbosity(VERY_VERBOSE);
+    inst.options_t.tofile = true;
+
+    // use files
+    if(!utils_file_exists(path)){
+                log_fatal("file does not exist");
+                tsp_handlefatal(&inst);
+            }
+
+    inst.options_t.inputfile = (char*) calloc(strlen(path), sizeof(char));
+    strcpy(inst.options_t.inputfile, path);
+
+
+    inst.options_t.graph_input = true;
+
+    if(inst.options_t.graph_input){
+        tsp_read_input(&inst);
+    }
+
+    // end options
 
     inst.best_solution.path = (int*) calloc(inst.nnodes, sizeof(int));
 
@@ -61,6 +69,7 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
     case ALG_2OPT_GREEDY:
         log_info("running 2OPT-GREEDY");
         e = h_greedy_2opt(&inst);
+        log_info("here");
         if(!err_ok(e)){
             log_fatal("greedy did not finish correctly");
             tsp_handlefatal(&inst);
@@ -93,7 +102,7 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
         break;
     }
 
-    rs.filename = (char*) malloc(strlen(inst.options_t.inputfile)+1);
+    rs.filename = (char*)malloc(strlen(inst.options_t.inputfile) + 1);
     strcpy(rs.filename, inst.options_t.inputfile);
     rs.cost = inst.best_solution.cost;
 }

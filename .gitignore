@@ -1,0 +1,57 @@
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+
+# Project binary files
+/make/bin/*
+!/make/bin/.gitkeep
+
+# Project object files
+/make/lib/algorithsm/*
+!/make/lib/algorithms/.gitkeep
+!/make/lib/utils/.gitkeep
+
+# Project logs files
+/make/plots/*
+!/make/plots/.gitkeep
+
+.DS_Store
+/.vscode
+
+.env
+
+results/TabuResults.dat
+results/VNSResults.dat
+
+plots/*
+
+/temp
