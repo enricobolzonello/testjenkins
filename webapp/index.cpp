@@ -21,12 +21,12 @@ Napi::Object TSP_runner(const Napi::CallbackInfo& info){
     int seed = (int) info[1].As<Napi::Number>();
     int time_limit = (int) info[2].As<Napi::Number>();
     int alg = (int) info[3].As<Napi::Number>();
-    runTSP(filename, seed, time_limit, index_algs[alg]);
+    return_struct* rs = runTSP(filename, seed, time_limit, index_algs[alg]);
 
     // javascript object
     Napi::Object ret = Napi::Object::New(env);
-    ret.Set("cost", Napi::Number::New(env, (double)rs.cost));
-    ret.Set("filename", Napi::String::New(env, (std::string)rs.filename));
+    ret.Set("cost", Napi::Number::New(env, (double)rs->cost));
+    ret.Set("filename", Napi::String::New(env, (std::string)rs->filename));
 
     return ret;
 }

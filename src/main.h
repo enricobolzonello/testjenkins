@@ -7,6 +7,4 @@ typedef struct {
     double cost;
 } return_struct;
 
-return_struct rs;
-
-void runTSP(const char* path, int seed, int time_limit, algorithms alg);
+return_struct* runTSP(const char* path, int seed, int time_limit, algorithms alg);

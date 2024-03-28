@@ -4,9 +4,11 @@ return_struct rs;
 
 // TODO: better handling of errors
 
-void runTSP(const char* path, int seed, int time_limit, algorithms alg){
+return_struct* runTSP(const char* path, int seed, int time_limit, algorithms alg){
     log_info("program started!");
     instance inst;
+
+    return_struct* rs = malloc(sizeof(return_struct));;
 
     ERROR_CODE e;
     tsp_init(&inst);
@@ -104,7 +106,9 @@ void runTSP(const char* path, int seed, int time_limit, algorithms alg){
         break;
     }
 
-    rs.filename = (char*)malloc(strlen(inst.options_t.inputfile) + 1);
-    strcpy(rs.filename, inst.options_t.inputfile);
-    rs.cost = inst.best_solution.cost;
+    rs->filename = (char*)malloc(strlen(inst.options_t.inputfile) + 1);
+    strcpy(rs->filename, inst.options_t.inputfile);
+    rs->cost = inst.best_solution.cost;
+
+    return rs;
 }
