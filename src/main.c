@@ -1,26 +1,38 @@
-#include "tsp.h"
-#include "algorithms/heuristics.h"
-#include "algorithms/metaheuristic.h"
-#include "algorithms/cplex_model.h"
+#include "main.h"
 
 // TODO: better handling of errors
 
-int main(int argc, char* argv[]){
+void runTSP(char* path, int seed, int time_limit, algorithms alg){
     log_info("program started!");
     instance inst;
-    ERROR_CODE e = tsp_parse_commandline(argc, argv, &inst);
-    if(!err_ok(e)){
-        log_error("error in command line parsing, error code: %d", e);
-        tsp_free_instance(&inst);
-        exit(0);
-    }
+
+    ERROR_CODE e;
+
+    inst.options_t.tofile = true;
+    inst.options_t.graph_input = true;
+
+    if(!utils_file_exists(path)){
+                log_fatal("file does not exist");
+                tsp_handlefatal(&inst);
+            }
+
+    inst.options_t.inputfile = (char*) calloc(strlen(path), sizeof(char));
+    strcpy(inst.options_t.inputfile, path);
 
     if(inst.options_t.graph_input){
         tsp_read_input(&inst);
     }
-    if(inst.options_t.graph_random){
-        tsp_generate_randompoints(&inst);
+
+    if(seed != -1){
+        inst.options_t.seed = seed;
     }
+
+    if(time_limit > 0){
+        inst.options_t.timelimit = time_limit;
+    }
+
+    inst.alg = alg;
+
 
     inst.best_solution.path = (int*) calloc(inst.nnodes, sizeof(int));
 
@@ -74,16 +86,6 @@ int main(int argc, char* argv[]){
             tsp_handlefatal(&inst);
         } 
         printf("VNS: %f\n", inst.best_solution.cost);
-        tsp_plot_solution(&inst);
-        break;
-    case ALG_CPLEX:
-        log_info("running CPLEX");
-        e = cx_TSPopt(&inst);
-        if(!err_ok(e)){
-            log_fatal("VNS did not finish correctly");
-            tsp_handlefatal(&inst);
-        } 
-        printf("Optimal: %f\n", inst.best_solution.cost);
         tsp_plot_solution(&inst);
         break;
     default:
