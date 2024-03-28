@@ -17,7 +17,7 @@ Napi::Object TSP_runner(const Napi::CallbackInfo& info){
     Napi::Env env = info.Env();
 
     std::string temp = (std::string) info[0].ToString();
-    char* filename = temp.data();
+    const char* filename = temp.data();
     int seed = (int) info[1].As<Napi::Number>();
     int time_limit = (int) info[2].As<Napi::Number>();
     int alg = (int) info[3].As<Napi::Number>();

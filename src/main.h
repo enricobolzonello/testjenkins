@@ -9,4 +9,4 @@ typedef struct {
 
 return_struct rs;
 
-void runTSP(char* path, int seed, int time_limit, algorithms alg);
+void runTSP(const char* path, int seed, int time_limit, algorithms alg);
