@@ -2,7 +2,7 @@
 
 // TODO: better handling of errors
 
-void runTSP(char* path, int seed, int time_limit, algorithms alg){
+void runTSP(const char* path, int seed, int time_limit, algorithms alg){
     log_info("program started!");
     instance inst;
 
