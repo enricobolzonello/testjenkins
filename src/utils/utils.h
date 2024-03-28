@@ -29,8 +29,6 @@
 
 #define NOT_CONNECTED -1.0f
 
-static char* algs_string[6];
-
 typedef struct {
     double x;
     double y;
