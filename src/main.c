@@ -1,5 +1,7 @@
 #include "main.h"
 
+return_struct rs;
+
 // TODO: better handling of errors
 
 void runTSP(const char* path, int seed, int time_limit, algorithms alg){
