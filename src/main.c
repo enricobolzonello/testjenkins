@@ -2,6 +2,7 @@
 
 // TODO: better handling of errors
 // test push
+// another test
 
 return_struct* runTSP(const char* path, int seed, int time_limit, algorithms alg){
     log_info("program started!");
