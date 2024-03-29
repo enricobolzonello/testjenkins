@@ -1,8 +1,7 @@
 #include "main.h"
 
-return_struct rs;
-
 // TODO: better handling of errors
+// test push
 
 return_struct* runTSP(const char* path, int seed, int time_limit, algorithms alg){
     log_info("program started!");
