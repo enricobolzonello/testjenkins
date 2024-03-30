@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd webapp && npm install'
+                sh 'cd webapp && npm install --production'
             }
         }
         stage('Test') {
