@@ -2,7 +2,7 @@ const TSPModule = require('./build/Release/travelingsalesmanoptimization.node');
 const express = require("express");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 5050;
 const app = express();
 
 app.use(cors());
