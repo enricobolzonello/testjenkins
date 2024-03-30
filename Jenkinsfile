@@ -15,7 +15,7 @@ pipeline {
         stage('Deliver') { 
             steps {
                 echo 'deliver'
-                sh './webapp/jenkins/scripts/deliver.sh' 
+                sh './webapp/jenkins/deliver.sh' 
                 //input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 //sh './jenkins/scripts/kill.sh' 
             }
