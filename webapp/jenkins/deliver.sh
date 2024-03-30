@@ -5,6 +5,6 @@ if [ $PM2_EXIST = Yes ] ; then
     pm2 restart tsp_webapp
     echo "Restart tsp_webapp."
 else
-    pm2 start file.js --name tsp_webapp
+    pm2 start webapp/index.js --name tsp_webapp
     echo "Started tsp_webapp."
 fi
