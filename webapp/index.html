@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TSP</title>
+    </head>
+
+    <body>
+        <form action="/" method="post">
+            <label>
+                Algorithm:
+                <select name="algorithm">
+                    <option value="0">Greedy</option>
+                    <option value="1">Greedy Iterative</option>
+                    <option value="2">Greedy 2-opt</option>
+                </select>
+            </label>
+
+            <label>
+                Seed:
+                <input type="number" name="seed" value="-1" min="-1">  
+            </label>
+            
+            <label>
+                Time Limit:
+                <input type="number" name="timelimit" value="-1" min="-1">  
+            </label>
+
+            <label>
+                Dataset:
+                <select name="dataset">
+                    <option value="../data/berlin52.tsp">berlin52</option>
+                </select>
+            </label>
+
+            <button type="submit">Run</button>
+        </form>
+    </body>
+
+</html>

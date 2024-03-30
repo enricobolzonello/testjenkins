@@ -7,20 +7,32 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+// use the “get” method of express to define the logic for the “/” route. 
+// Inside this method, use res.sendFile() method which is used to send the HTML form we just created as a response.
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
 
-console.log('exports : ', TSPModule);
-console.log();
+app.post("/", (req, res) => {
+    const algorithm = Number(req.body.algorithm);
+    const seed = Number(req.body.seed);
+    const timelimit = Number(req.body.timelimit);
+    const dataset = req.body.dataset;
 
-let obj = TSPModule.TSP_runner("../data/berlin52.tsp", 123, 1200, 2)
+    res.send("Data received");
 
-console.log('cost : ', obj['cost']);
-console.log();
+    let obj = TSPModule.TSP_runner(dataset, seed, timelimit, algorithm)
 
-console.log('filename : ', obj['filename']);
-console.log();
+    console.log('cost : ', obj['cost']);
+    console.log();
+
+    console.log('filename : ', obj['filename']);
+    console.log();
+});
 
 // start the Express server
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
-  });
+});

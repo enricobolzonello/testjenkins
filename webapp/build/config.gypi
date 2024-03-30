@@ -411,7 +411,16 @@
     "v8_use_siphash": 1,
     "want_separate_host_toolset": 0,
     "nodedir": "/Users/enricobolzonello/Library/Caches/node-gyp/21.7.1",
-    "python": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3",
-    "standalone_static_library": 1
+    "standalone_static_library": 1,
+    "global_prefix": "/opt/homebrew",
+    "local_prefix": "/Users/enricobolzonello/Documents/GitHub/testjenkins/webapp",
+    "globalconfig": "/opt/homebrew/etc/npmrc",
+    "userconfig": "/Users/enricobolzonello/.npmrc",
+    "init_module": "/Users/enricobolzonello/.npm-init.js",
+    "npm_version": "10.5.0",
+    "node_gyp": "/opt/homebrew/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
+    "cache": "/Users/enricobolzonello/.npm",
+    "user_agent": "npm/10.5.0 node/v21.7.1 darwin arm64 workspaces/false",
+    "prefix": "/opt/homebrew"
   }
 }

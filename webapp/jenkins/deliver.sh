@@ -1,0 +1,3 @@
+#!/bin/sh
+npm install --production
+pm2 restart all
